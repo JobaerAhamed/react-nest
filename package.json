@@ -10,7 +10,6 @@
   "scripts": {
     "start:ui": "node scripts/start.js",
     "build:ui": "node scripts/build.js",
-    "test:ui": "node scripts/test.js",
     "prebuild": "rimraf dist",
     "build": "concurrently \"npm run build:ui\" \"npm run build:server\"",
     "build:server": "nest build && echo \"Successfully Built Nest Application\"",
@@ -20,8 +19,11 @@
     "start:debug-server": "nest start --debug --watch",
     "start:prod-server": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" -c .eslintrc.js",
+    "test": "concurrently \"npm run test:server\" \"npm run test:ui\"",
+    "test:ui": "jest --config=ui-test.config.js",
     "test:server": "jest --config=server-test.config.js",
     "test:watch-server": "jest --config=server-test.config.js --watch",
+    "test:watch-ui": "node scripts/test.js",
     "test:cov-server": "jest --config=server-test.config.js --coverage",
     "test:debug-server": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e-server": "jest --config ./e2e/jest-e2e.json"
@@ -127,7 +129,9 @@
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.1",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "5.1.4"
+    "workbox-webpack-plugin": "5.1.4",
+    "husky": "4.3.8",
+    "lint-staged": "8.1.5"
   },
   "babel": {
     "presets": [
