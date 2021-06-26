@@ -1,6 +1,8 @@
 module.exports = {
   roots: ['<rootDir>/src/ui'],
   collectCoverageFrom: ['src/ui/**/*.{js,jsx,ts,tsx}', '!src/ui/**/*.d.ts'],
+  coverageDirectory: '<rootDir>/coverage/ui',
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'json-summary'],
   setupFiles: ['react-app-polyfill/jsdom'],
   setupFilesAfterEnv: ['<rootDir>/src/ui/setupTests.ts'],
   testMatch: [

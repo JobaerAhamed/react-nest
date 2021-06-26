@@ -5,6 +5,7 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  coverageDirectory: '../coverage',
+  coverageDirectory: '../../coverage/server',
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'json-summary'],
   testEnvironment: 'node',
 };
